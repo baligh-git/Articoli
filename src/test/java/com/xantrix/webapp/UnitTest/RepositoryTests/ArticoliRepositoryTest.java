@@ -9,16 +9,14 @@ import com.xantrix.webapp.Application;
 import com.xantrix.webapp.entities.Articoli;
 import com.xantrix.webapp.repository.ArticoliRepository;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
+
 @ContextConfiguration(classes = Application.class)
 @SpringBootTest
 //@FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -44,8 +42,9 @@ public class ArticoliRepositoryTest
 	@Test
 	public void TestfindByCodArt() throws Exception
 	{
-		assertThat(articoliRepository.findByCodArt("002000301")).extracting(Articoli::getDescrizione)
-				.containsOnly("ACQUA ULIVETO 15 LT", "ACQUA ULIVETO 15 LT");
+		assertThat(articoliRepository.findByCodArt("002000301")).extracting(Articoli::getDescrizione).isEqualTo("ACQUA ULIVETO 15 LT");
+
+				//.containsOnly("ACQUA ULIVETO 15 LT", "ACQUA ULIVETO 15 LT");
 	}
 
 }
