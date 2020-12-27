@@ -1,7 +1,8 @@
 package com.xantrix.webapp.UnitTest.RepositoryTests;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
+
+
 
 import java.util.List;
 
@@ -29,14 +30,16 @@ public class ArticoliRepositoryTest
 	public void TestfindByDescrizioneLike()
 	{
 		List<Articoli> items = articoliRepository.findByDescrizioneLike("ACQUA ULIVETO%");
-		assertEquals(2, items.size());
+		assertThat(items.size()).isEqualTo(2);
+		
+		
 	}
 	
 	@Test
 	public void TestfindByDescrizioneLikePage()
 	{
 		List<Articoli> items = articoliRepository.findByDescrizioneLike("ACQUA%",PageRequest.of(0, 10));
-		assertEquals(10, items.size());
+		assertThat(items.size()).isEqualTo(10);
 	}
 
 	@Test
